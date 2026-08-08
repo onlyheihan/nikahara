@@ -3,7 +3,170 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ONLYHEIHAN - Digital Wedding Invitation</title>
+    <title>Undangan Pernikahan - Fulan & Fulanah</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f0f4f8;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 15px;
+        }
+        .card {
+            background: #ffffff;
+            max-width: 420px;
+            width: 100%;
+            border-radius: 20px;
+            padding: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+        .invitation-img {
+            width: 100%;
+            height: auto;
+            border-radius: 12px;
+            display: block;
+        }
+        
+        /* Stylings Hitung Mundur */
+        .countdown-title {
+            margin-top: 20px;
+            font-size: 14px;
+            color: #555;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .timer {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0 25px 0;
+            background: #eef3f8;
+            padding: 12px;
+            border-radius: 12px;
+        }
+        .timer-box {
+            text-align: center;
+        }
+        .timer-box span {
+            display: block;
+            font-size: 20px;
+            font-weight: bold;
+            color: #1e293b;
+        }
+        .timer-box small {
+            font-size: 10px;
+            color: #64748b;
+        }
+
+        /* Styling Tombol-Tombol */
+        .btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 10px;
+            background-color: #2b3a4a;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 25px;
+            font-size: 14px;
+            font-weight: bold;
+            text-align: center;
+            border: none;
+            cursor: pointer;
+            transition: 0.2s;
+        }
+        .btn-secondary {
+            background-color: #475569;
+        }
+        .btn-music {
+            background-color: #059669;
+        }
+        .footer {
+            margin-top: 15px;
+            font-size: 11px;
+            color: #94a3b8;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="card">
+        <!-- Gambar Utama Undangan -->
+        <img src="undangan.jpg" alt="Undangan ONLYHEIHAN" class="invitation-img">
+
+        <!-- Musik Latar (Otomatis Putar saat Tombol Musik Diklik) -->
+        <audio id="myAudio" loop>
+            <source src="https://www.soundhelix.com/examples/mp3/SoundHelix-Song-1.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Hitung Mundur Acara -->
+        <div class="countdown-title">Hitung Mundur Acara</div>
+        <div class="timer">
+            <div class="timer-box"><span id="days">00</span><small>Hari</small></div>
+            <div class="timer-box"><span id="hours">00</span><small>Jam</small></div>
+            <div class="timer-box"><span id="minutes">00</span><small>Menit</small></div>
+            <div class="timer-box"><span id="seconds">00</span><small>Detik</small></div>
+        </div>
+
+        <!-- Tombol Interaktif -->
+        <button onclick="toggleMusic()" id="musicBtn" class="btn btn-music">🎵 Putar Musik</button>
+        <a href="https://maps.google.com" target="_blank" class="btn btn-secondary">📍 Petunjuk Lokasi (Google Maps)</a>
+        <a href="https://wa.me/628123456789?text=Halo,%20saya%20akan%20hadir%20di%20acara%20pernikahan!" target="_blank" class="btn">💌 Konfirmasi Kehadiran (RSVP)</a>
+
+        <div class="footer">
+            &copy; 2026 ONLYHEIHAN
+        </div>
+    </div>
+
+    <!-- Script Logika Hitung Mundur & Musik -->
+    <script>
+        // Set tanggal acara pernikahan di sini (Tahun, Bulan-1, Tanggal)
+        const eventDate = new Date("December 31, 2026 09:00:00").getTime();
+
+        const updateTimer = setInterval(function() {
+            const now = new Date().getTime();
+            const distance = eventDate - now;
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = MathBisa banget! Kita mulai dari **Nomor 1: Membuat Undangan Interaktif** ya. 🚀
+
+Kita akan ubah tampilan gambar sederhana tadi menjadi website undangan yang hidup dengan fitur:
+1. **Tombol "Buka Undangan"** (saat diklik, halaman bergulir & musik menyala).
+2. **Musik Latar (Background Music)** yang romantis.
+3. **Hitung Mundur (Countdown Timer)** menuju hari H.
+4. **Tombol Navigasi ke Google Maps** lokasi acara.
+
+---
+
+### 🛠️ Langkah Lengkapnya:
+
+#### 1. Persiapkan File Musik
+* Cari file lagu/musik romantis berformat **`.mp3`** di HP/laptop kamu.
+* *Rename* (ubah nama) filenya menjadi **`musik.mp3`**.
+* Upload file `musik.mp3` tersebut ke repository **`onlyheihan`** di GitHub (pakai tombol **Add file** > **Upload files** seperti saat upload gambar tadi).
+
+---
+
+#### 2. Update Kode di `index.html`
+Edit file **`index.html`** kamu di GitHub, hapus seluruh kodenya, lalu tempel (*paste*) kode di bawah ini:
+
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Undangan Pernikahan - Fulan & Fulanah</title>
     <style>
         * {
             box-sizing: border-box;
@@ -24,7 +187,7 @@
             max-width: 420px;
             width: 100%;
             border-radius: 16px;
-            padding: 16px;
+            padding: 20px;
             box-shadow: 0 10px 25px rgba(0,0,0,0.08);
             text-align: center;
         }
@@ -34,25 +197,58 @@
             border-radius: 12px;
             display: block;
         }
-        .button-group {
-            margin-top: 20px;
-            margin-bottom: 10px;
+        
+        /* Section Countdown */
+        .countdown-title {
+            margin-top: 25px;
+            font-size: 16px;
+            color: #2b3a4a;
+            font-weight: bold;
         }
+        #timer {
+            display: flex;
+            justify-content: space-around;
+            margin: 15px 0 25px 0;
+        }
+        .time-box {
+            background: #2b3a4a;
+            color: #fff;
+            padding: 10px;
+            border-radius: 8px;
+            width: 22%;
+        }
+        .time-box span {
+            display: block;
+            font-size: 18px;
+            font-weight: bold;
+        }
+        .time-box small {
+            font-size: 10px;
+            text-transform: uppercase;
+        }
+
+        /* Tombol - Tombol */
         .btn {
-            display: inline-block;
-            width: 80%;
-            padding: 12px 20px;
+            display: block;
+            width: 100%;
+            padding: 12px 0;
+            margin-bottom: 10px;
             background-color: #2b3a4a;
             color: #ffffff;
             text-decoration: none;
             border-radius: 30px;
-            font-size: 14px;
+            font-size: 13px;
             letter-spacing: 1px;
             font-weight: bold;
-            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+        .btn-secondary {
+            background-color: #e2e8f0;
+            color: #2b3a4a;
         }
         .footer {
-            margin-top: 15px;
+            margin-top: 20px;
             font-size: 12px;
             color: #888;
         }
@@ -60,18 +256,66 @@
 </head>
 <body>
 
-    <div class="card">
-        <img src="undangan.jpg" alt="Undangan ONLYHEIHAN" class="invitation-img">
+    <!-- Musik Latar -->
+    <audio id="bg-music" loop>
+        <source src="musik.mp3" type="audio/mpeg">
+    </audio>
 
-        <div class="button-group">
-            <!-- Link ke Instagram -->
-            <a href="https://instagram.com/username_kamu" target="_blank" class="btn">INSTAGRAM KAMI</a>
+    <div class="card">
+        <!-- Gambar Utama -->
+        <img src="undangan.jpg" alt="Undangan NIKAHARA" class="invitation-img">
+
+        <!-- Countdown Timer -->
+        <div class="countdown-title">Menghitung Hari Pernikahan</div>
+        <div id="timer">
+            <div class="time-box"><span id="days">00</span><small>Hari</small></div>
+            <div class="time-box"><span id="hours">00</span><small>Jam</small></div>
+            <div class="time-box"><span id="minutes">00</span><small>Menit</small></div>
+            <div class="time-box"><span id="seconds">00</span><small>Detik</small></div>
         </div>
+
+        <!-- Tombol Interaktif -->
+        <button class="btn" onclick="playAudio()">🎵 BUKA UNDANGAN & PUTAR MUSIK</button>
+        <a href="[https://maps.google.com](https://maps.google.com)" target="_blank" class="btn btn-secondary">📍 PETAKAN LOKASI (GOOGLE MAPS)</a>
+        <a href="[https://instagram.com/onlyheihan](https://instagram.com/onlyheihan)" target="_blank" class="btn btn-secondary">📸 INSTAGRAM KAMI</a>
 
         <div class="footer">
-            &copy; 2026 ONLYHEIHAN
+            &copy; 2026 NIKAHARA
         </div>
     </div>
+
+    <script>
+        // Jalankan Musik Latar
+        function playAudio() {
+            var music = document.getElementById("bg-music");
+            music.play();
+            alert("Selamat mendengarkan! 🎉");
+        }
+
+        // Jalankan Hitung Mundur
+        // Silakan sesuaikan tanggal pernikahan di bawah ini (Format: Tahun-Bulan-Tanggal)
+        var targetDate = new Date("2026-12-31T09:00:00").getTime();
+
+        var countdown = setInterval(function() {
+            var now = new Date().getTime();
+            var distance = targetDate - now;
+
+            var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days;
+            document.getElementById("hours").innerText = hours;
+            document.getElementById("minutes").innerText = minutes;
+            document.getElementById("seconds").innerText = seconds;
+
+            if (distance < 0) {
+                clearInterval(countdown);
+                document.getElementById("timer").innerHTML = "<b>Acara Telah Berlangsung</b>";
+            }
+        }, 1000);
+    </script>
 
 </body>
 </html>
